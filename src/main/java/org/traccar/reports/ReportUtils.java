@@ -116,6 +116,9 @@ public final class ReportUtils {
             BigDecimal value = new BigDecimal(firstPosition.getDouble(Position.KEY_FUEL_LEVEL)
                     - lastPosition.getDouble(Position.KEY_FUEL_LEVEL));
             return value.setScale(1, RoundingMode.HALF_EVEN).doubleValue();
+        } else if (lastPosition.getAttributes().get(Position.KEY_CURRENT_FUEL_CONSUMPTION) != null) {
+            BigDecimal value = new BigDecimal(lastPosition.getDouble(Position.KEY_CURRENT_FUEL_CONSUMPTION));
+            return value.setScale(1, RoundingMode.HALF_EVEN).doubleValue();
         }
         return 0;
     }
